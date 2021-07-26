@@ -1,0 +1,295 @@
+1)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    int vet1[5],
+        vet2[5],
+        vetUniao[10],
+        vetSoma[5], vetProduto[5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("incira o valor do vetor 1 na posicao %d: ", i);
+        scanf("%d", &vet1[i]);
+        printf("incira o valor do vetor 2 na posicao %d: ", i);
+        scanf("%d", &vet2[i]);
+
+        vetUniao[i] = vet1[i];
+        vetUniao[(i) + 5] = vet2[i];
+        vetSoma[i] = vet1[i] + vet2[i];
+        vetProduto[i] = vet1[i] * vet2[i];
+    }
+
+    printf("Primeiro Vetor gerado: \n [");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d, ", vet1[i]);
+    }
+    printf("] \n");
+    printf("Segundo Vetor gerado: \n [");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d, ", vet2[i]);
+    }
+    printf("] \n");
+
+    printf("Vetor Uniao : \n [ ");
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d, ", vetUniao[i]);
+    }
+    printf("] \n");
+
+    printf("Vetor Soma : \n [ ");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d, ", vetSoma[i]);
+    }
+    printf("] \n");
+
+    printf("Vetor Produto : \n [");
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d, ", vetProduto[i]);
+    }
+    printf("] \n");
+
+    return 0;
+}
+
+
+...................................................................
+
+
+2)
+
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+typedef enum
+{
+    false = 0,
+    true = !false
+} bool;
+
+int main(int argc, char *argv[])
+{
+    int vet[10];
+    bool verifica = false;
+
+    for (int i = 0; i < 10; i++)
+    {
+
+        printf("incira o valor do vetor na posicao %d: ", i);
+        scanf("%d", &vet1[i]);
+
+        if (vet[i] > 50)
+        {
+            printf("elemento: %d , indice: %d \n", vet[i], i);
+            verifica = true;
+        }
+    }
+
+    printf("Vetor gerado : \n [ ");
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d, ", vet[i]);
+    }
+    printf("] \n");
+
+    if (!verifica)
+    {
+        printf("Nenhum elemento maior que 50 encontrado");
+    }
+
+    return 0;
+}
+
+
+...................................................................
+
+
+3)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+
+{
+
+    int mat[5][7], i, j, k, f, menor = 999, menorIndex, maior = 0, maiorIndex;
+
+    for (i = 0; i < 5; i++)
+    {
+        for (j = 0; j < 7; j++)
+        {
+            printf("incira o valor da posicao %dx%d: ", i, j);
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    printf("Matriz gerada: \n");
+
+    for (i = 0; i < 5; i++)
+    {
+        for (j = 0; j < 7; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (k = 0; k < 5; k++)
+    {
+        for (j = 0; j < 7; j++)
+        {
+            if (mat[k][j] < menor)
+            {
+                menor = mat[k][j];
+                menorIndex = j;
+            }
+        }
+        for (f = 0; f < 5; f++)
+        {
+            if (mat[f][menorIndex] > maior)
+            {
+                maior = mat[f][menorIndex];
+                maiorIndex = f;
+            }
+        }
+
+        if (maior == menor)
+        {
+            printf("O elemento %d em mat[%d][%d] e um ponto de cela!! \n", maior, k, maiorIndex);
+        }
+
+        menor = 9999;
+        maior = 0;
+        menorIndex = -1;
+        maiorIndex = -1;
+    }
+    //  > i     e        j >
+
+    return 0;
+}
+
+
+
+
+...................................................................
+
+
+4)
+
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    int mat[10][10], i, j, aux1[10], aux2[10], matrizFinal[10][10];
+
+    ////Com numeros aleatorios
+    srand(time(NULL));
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            mat[i][j] = (rand() % 99) + 1;
+        }
+    }
+
+    ////com inserção de valores
+    // for (i = 0; i < 10; i++)
+    // {
+    //     for (j = 0; j < 10; j++)
+    //     {
+    //         printf("incira o valor da posicao %dx%d: ", i, j);
+    //         scanf("%d", &mat[i][j]);
+    //     }
+    // }
+
+    printf("Matriz inicial:\n");
+
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    // a) Troca linha 2 com a linha 8
+
+    printf("Troca linha 2 com a linha 8:\n");
+    for (j = 0; j < 10; j++)
+    {
+        aux1[j] = mat[1][j];
+        aux2[j] = mat[7][j];
+        mat[1][j] = aux2[j];
+        mat[7][j] = aux1[j];
+    }
+    //exibi a matriz em tela
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    // b) Troca coluna 4 com coluna 10
+
+    printf("Troca coluna 4 com coluna 10:\n");
+    for (i = 0; i < 10; i++)
+    {
+        aux1[i] = mat[i][3];
+        aux2[i] = mat[i][9];
+        mat[i][3] = aux2[i];
+        mat[i][9] = aux1[i];
+    }
+    //exibi a matriz em tela
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    // c) Troca diagonal principal com diagonal secundaria
+
+    printf("Troca diagonal principal com diagonal secundaria:\n");
+
+    for (i = j = 0; i < 10; i++)
+    {
+
+        aux1[i] = 0;
+        aux1[i] = mat[i][j];
+        mat[i][j] = mat[i][9 - j];
+        mat[i][9 - j] = aux1[i];
+        j++;
+    }
+    //exibi a matriz em tela
+
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}

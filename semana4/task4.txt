@@ -1,0 +1,148 @@
+1)
+Algoritmo "2"
+Var
+   vi : vetor [1..100] de real
+   vii : vetor [1..100] de real
+   vmed : vetor [1..100] de real
+   cont, test, contP : inteiro
+
+Inicio
+   test <- 1
+   cont <- 1
+   enquanto (test = 1) faça
+      escreva("Digite o primeiro número da coluna ", cont, ": ")
+      leia(vi[cont])
+      escreva("Digite o segundo número da coluna ", cont, ": ")
+      leia(vii[cont])
+      vmed[cont] <- (vi[cont]+vii[cont])/2
+      escreval("A média da coluna ", cont, " é ", vmed[cont])
+      cont <- cont+1
+      escreva("digite 1 para continuar e 0 para parar: ")
+      leia(test)
+
+   fimenquanto
+   contP <- 1
+   escreva("V1: ")
+   enquanto (contP < cont) faça
+      escreva(vi[contP], " ")
+      contP <- contP+ 1
+   fimenquanto
+   escreval("")
+   contP <- 1
+   escreva("V2: ")
+   enquanto (contP < cont) faça
+      escreva(vii[contP], " ")
+      contP <- contP+ 1
+   fimenquanto
+   escreval("")
+   contP <- 1
+   escreva("Vm: ")
+   enquanto (contP < cont) faça
+      escreva(vmed[contP], " ")
+      contP <- contP+ 1
+   fimenquanto
+   escreval("")
+   
+Fimalgoritmo
+
+
+2)
+Algoritmo "2"
+Var
+   mat : vetor [1..5,1..5] de real
+   coluna, linha, teste : inteiro
+   somAb, somAc : real
+
+Inicio
+
+   teste <- 1
+   enquanto (teste = 1) faça
+            escreva("Digite a coluna: ")
+      leia(coluna)
+      escreva("Digite a linha: ")
+      leia(linha)
+
+      escreva("Digite o valor da posição : ")
+      leia(mat[linha, coluna])
+      
+      escreva("digite 1 para continuar e 0 para parar: ")
+      leia(teste)
+   fimenquanto
+   coluna <- 1
+   linha <- 1
+   para coluna de 1 até 5 faça
+      para linha de 1 até 5 faça
+         teste <- coluna - linha
+         se(teste<0) então
+           somAb <- somAb+mat[linha, coluna]
+         senão
+06479
+30984
+86058
+14302
+15280
+      fimse
+      fimpara
+   fimpara
+   escreval("A soma dos numeros abaixo da diagonal principal é: ", somAb)
+
+   para coluna de 1 até 5 faa
+      para linha de 1 até 5 faça
+         teste <- coluna - linha
+         se(teste>0) então
+           somAc <- somAc+mat[linha, coluna]
+         senão
+
+         fimse
+      fimpara
+   fimpara
+   escreval("A soma dos numeros acima da diagonal principal é: ", somAc)
+
+
+Fimalgoritmo
+
+
+
+3)
+
+Algoritmo "3"
+
+Var
+   matA, matB, matC : vetor [1..5,1..3] de real
+   col, lin, test : inteiro
+   somAb, somAc : real
+
+Inicio
+   col <- 1
+   lin <- 1
+   para col de 1 até 3 faça
+      para lin de 1 até 5 faça
+         escreva("Digite à linha ", lin," e coluna ",col," de A: ")
+         leia(matA[lin,col])
+      fimpara
+   fimpara
+   col <- 1
+   lin <- 1
+   para col de 1 até 3 faça
+      para lin de 1 até 5 faça
+         escreva("Digite à linha ", lin," e coluna ",col," de B: ")
+         leia(matB[lin,col])
+      fimpara
+   fimpara
+   col <- 1
+   lin <- 1
+   para col de 1 até 3 faça
+      para lin de 1 até 5 faça
+         matC[lin,col] <- matA[lin,col]+matB[lin,col]
+      fimpara
+   fimpara
+   escreval("A matriz C é:")
+   para col de 1 até 3 faça
+      para lin de 1 até 5 faça
+         escreva(matC[lin,col], " ")
+      fimpara
+      escreval("")
+   fimpara
+
+
+Fimalgoritmo

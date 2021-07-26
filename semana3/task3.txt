@@ -1,0 +1,114 @@
+algoritmo "fibonacci"
+
+var nFibonacci, num, contador, antePenultimo, penultimo: inteiro
+
+inicio
+antePenultimo <- 1
+penultimo <- 1
+
+escreva("Digite o numero: ")
+leia(nFibonacci)
+
+para contador de 1 ate nFibonacci passo 1 faca
+
+    se(contador < 3) entao
+        num <- 1
+        escreva(num)
+    senao
+        antePenultimo <-penultimo
+        penultimo <- num
+        num <- antePenultimo + penultimo
+        escreva(num)
+    fimse
+fimpara
+fimalgoritmo
+
+
+///////////////////////////////////////////////////////////////
+
+
+algoritmo "NumDesconhecido"
+
+var unidade, dezena, centena, milhar , num: inteiro
+
+inicio
+
+unidade <- 0
+dezena <- 0
+centena <- 0
+milhar <- 0
+
+repita
+    escreva("Digite o numero = ")
+    leia(num)
+    se (num > 0) e (num < 10) entao
+            unidade <- unidade + 1
+    fimse
+    se (num > 10) e (num < 100) entao
+            dezena <- dezena + 1
+    fimse
+    se (num > 100) e (num < 1000) entao
+            centena <- centena + 1
+    fimse
+    se (num > 1000) e (num < 10000) entao
+            milhar <- milhar + 1
+    fimse
+ate(num <= 0) ou (num >= 10000)
+
+escreval("unidade: ", unidade)
+escreval("dezena: ", dezena)
+escreval("centena: ", centena)
+escreval("milhar: ", milhar)
+
+fimalgoritmo
+
+
+///////////////////////////////////////////////////////////////
+
+algoritmo "trianguloVerifying"
+
+var anguloA, AnguloB, AnguloC : real
+
+inicio
+
+escreva("Digite o anguloA = ")
+    leia(anguloA)
+escreva("Digite o anguloB = ")
+    leia(anguloB)
+escreva("Digite o anguloC = ")
+    leia(anguloC)
+
+    se (anguloA + anguloB + anguloC = 180) entao
+        se (anguloA = anguloB) e ( anguloA = anguloC) entao
+            escreva("É um triangulo equilátero")
+        fimse
+        se ((anguloA = anguloB) e (anguloA <> anguloC)) ou ( (anguloA = anguloC) e (anguloA <> anguloB)) ou ( (anguloB = anguloC) e (anguloB <> anguloA)) entao
+            escreva("É um triangulo isóceles")
+        fimse
+        se (anguloA <> anguloB) e ( anguloA <> anguloC) e ( anguloB <> anguloC) entao
+            escreva("É um triangulo escaleno")
+        fimse
+        senao
+            escreva("Não é um triangulo")
+    fimse
+
+fimalgoritmo
+
+
+///////////////////////////////////////////////////////////////
+
+
+algoritmo "Tabuada"
+
+var numero, contador : inteiro
+
+inicio
+
+escreva("Digite o numero: ")
+    leia(numero)
+
+para contador de 1 ate 10 passo 1 faca
+    escreval(contador, " x",numero ," =", contador*numero)
+fimpara
+
+fimalgoritmo

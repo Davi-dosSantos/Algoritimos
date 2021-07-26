@@ -1,0 +1,71 @@
+
+//1)
+algoritmo "AntecessorSucessor"
+var numero, antecessor, sucessor : inteiro
+inicio
+	escreva("Digite o numero: ")
+	leia(numero)
+	antecessor <- (numero - 1)
+	sucessor <- (numero + 1)
+	escreval("O sucessor e: ", sucessor)
+	escreval("O antecessor e: ", antecessor)
+
+
+fimalgoritmo
+
+2)
+algoritmo "ConcursoPremioGanhadores"
+var primeiro, segundo, terceiro, premio: real
+inicio
+	premio <- 780000
+ primeiro <- premio * 0.46
+	segundo <- premio * 0.32
+	terceiro <- premio - (primeiro + segundo)
+	escreval("O primeiro lugar recebera R$", primeiro)
+	escreval("O segundo lugar recebera R$", segundo)
+	escreval("O terceiro lugar recebera R$", terceiro)
+
+fimalgoritmo
+
+
+//3)
+algoritmo "Idade"
+var anoNascimento, anos, meses, dias, semanas, anoAtual : real
+inicio
+	escreva("Digite o ano de nascimento ")
+	leia(anoNascimento)
+	escreva("Digite o ano atual ")
+   leia(anoAtual)
+
+	anos <- anoAtual - anoNascimento
+	meses <- anos * 12
+	dias <- anos *365
+	semanas <- dias/7
+
+	escreval("A idade da pessoa em ANOS: ", anos)
+	escreval("A idade da pessoa em MESES: ", meses)
+	escreval("A idade da pessoa em DIAS: ", dias)
+	escreval("A idade da pessoa em SEMANAS: ", semanas)
+
+fimalgoritmo
+
+//4)
+
+Algoritmo "AvaliaNota"
+Var nota1, nota2, mediaAluno: real
+Inicio
+escreva("Digite a nota1: ")
+	leia(nota1)
+	escreva("Digite a nota2: ")
+	leia(nota2)
+	mediaAluno <- (nota1+nota2)/2
+	se mediaAluno < 3 entao
+		escreva("Reprovado")
+	se mediaAluno >= 3  e mediaAluno <7 entao
+		escreva("Exame")
+	senao
+	escreva("Aprovado")
+ fimse
+ fimse
+Fimalgoritmo
+

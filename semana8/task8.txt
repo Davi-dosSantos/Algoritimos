@@ -1,0 +1,149 @@
+
+
+1)
+#include <stdio.h>
+
+int SOMA(int a, int b)
+{
+    int result;
+    result = a + b;
+    return result;
+}
+
+int main(int argc, char *argv[])
+{
+    int n1 = 0, n2 = 0;
+    while (n1 <= 0 || n2 <= 0)
+    {
+        printf("Digite o primeiro numero > 0: ");
+        scanf("%d", &n1);
+        printf("Digite o segundo numero > 0: ");
+        scanf("%d", &n2);
+    }
+    printf("soma = %d", SOMA(n1, n2));
+}
+
+
+
+2)
+#include <stdio.h>
+
+float PERCENTUAL(float vAntigo, float vNovo)
+{
+    float result;
+    result = ((vNovo * 100 / vAntigo) - 100);
+    return result;
+}
+
+int main(int argc, char *argv[])
+{
+    float n1 = 0.0, n2 = 0.0;
+    while (n1 <= 0 || n2 <= 0)
+    {
+        printf("Digite o valor antigo: ");
+        scanf("%f", &n1);
+        printf("Digite o novo valor: ");
+        scanf("%f", &n2);
+    }
+    printf("Valor do acrecimo em percentual: %f ", PERCENTUAL(n1, n2));
+}
+
+
+3)
+#include <stdio.h>
+
+void MULTIPLICA(int n)
+{
+    int result = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            result = i * j;
+            if (result <= (i * i))
+            {
+                printf("%d ", result);
+            }
+        }
+        printf("\n");
+    }
+    return;
+}
+
+int main(int argc, char *argv[])
+{
+    int n1 = 0;
+    while (n1 <= 1 || n1 > 9)
+    {
+        printf("Digite um valor inteiro entre 1 e 9: ");
+        scanf("%d", &n1);
+    }
+    MULTIPLICA(n1);
+}
+
+
+4)
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int MENORELEM(int n[6][6])
+{
+    int menorElement = 999;
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+
+            if (i == 5 - j)
+            {
+                if (n[i][j] < menorElement)
+                {
+                    menorElement = n[i][j];
+                }
+            }
+        }
+        printf("\n");
+    }
+    return menorElement;
+}
+
+int main(int argc, char *argv[])
+{
+    int mat[6][6], i, j;
+
+    ////Com numeros aleatorios
+    srand(time(NULL));
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 6; j++)
+        {
+            mat[i][j] = (rand() % 99) + 1;
+        }
+    }
+
+    ////com inserção de valores
+    // for (i = 0; i < 6; i++)
+    // {
+    //     for (j = 0; j < 6; j++)
+    //     {
+    //         printf("incira o valor da posicao %dx%d: ", i, j);
+    //         scanf("%d", &mat[i][j]);
+    //     }
+    // }
+
+    printf("Matriz inicial:\n");
+
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 6; j++)
+        {
+            printf("%3d | ", mat[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("O menor Elemento da diagonal secundaria:%d", MENORELEM(mat));
+
+    return 0;
+}

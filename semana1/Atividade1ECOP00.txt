@@ -1,0 +1,43 @@
+
+ 1)
+algoritmo "grausParaRadianos"
+var graus, rad: real
+const pi <-3.1416
+inicio
+    escreva("Digite em graus = ")
+    leia(graus) { Entrada }
+    rad <– (graus*pi) / 180 { Processamento }
+    escreval("Resultado: ", rad,"Rad") { Saida }
+fimalgoritmo
+
+2)
+algoritmo "calculaAlturaTorre"
+var altura, comprimentoSombra,angulo: real
+const pi <-3.1416
+inicio
+    escreva("Digite o angulo(em graus) da ponta da sombra ao topo da torre = ")
+    leia(angulo) { Entrada }
+    escreva("Digite o comprimento da sombra = ")
+    leia(comprimentoSombra) { Entrada }
+    altura <- comprimentoSombra*(Tan(angulo*PI/180)) { Processamento }
+    escreval("A altura da torre é ", altura) { Saida }
+fimalgoritmo
+
+3)
+algoritmo "CalculaLadoEAngulosFaltantes"
+var ladoA, ladoB,ladoC, anguloA,anguloB,anguloC : real
+const pi <-3.1416
+inicio
+    escreva("Digite o angulo C = ")
+    leia(anguloC) { Entrada }
+    escreva("Digite o lado A = ")
+    leia(ladoA) { Entrada }
+    escreva("Digite o lado B = ")
+    leia(ladoB) { Entrada }
+    ladoC <– RaizQ(ladoA^2 + ladoB^2 - 2*ladoA*ladoB*cos(anguloC*PI/180)) { Processamento }
+    anguloA <– ArcCos((ladoB^2 + ladoC^2 - ladoA^2) / 2 * ladoB * lado c) { Processamento }
+    anguloB <– ArcCos((ladoA^2 + ladoC^2 - ladoB^2) / 2 * ladoA * lado c) { Processamento }
+    escreval("O lado C é ", ladoC) { Saida }
+    escreval("O angulo A é", anguloA) { Saida }
+    escreval("O angulo B é", anguloB) { Saida }
+fimalgoritmo

@@ -1,0 +1,114 @@
+1) 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main(int argc, char *argv[])
+{
+    int x,y,z;
+    float geom, pond, harm;
+    printf("Digite 3 numeros \n apertando enter após cada um: ");
+    scanf("%d", &x);
+    scanf("%d", &y); 
+    scanf("%d", &z); 
+
+    geom = pow((x*y*z),(1.0/3));
+    pond = (x+2*y+3*z)/6.0;
+    harm = 1.0/((1.0/x)+(1.0/y)+(1.0/z));
+
+    printf("A média geométrica é: %f \n", geom);
+    printf("A média ponderada é: %f \n", pond);
+    printf("A média harmonica é: %f \n", harm);
+    
+    return 0;
+}
+
+
+2)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main(int argc, char *argv[])
+{
+    int x,sucessor,antecessor;
+    
+    printf("Digite um numero: ");
+    scanf("%d", &x);
+    
+    sucessor = x+1;
+    antecessor = x-1;
+   
+    printf("O sucessor é: %d \n", sucessor);
+    printf("O antecessor é: %d \n", antecessor);
+    return 0;
+}
+
+3)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define PI 3.1416
+int main(int argc, char *argv[])
+{
+    float vol,raio,altura;;
+    
+    printf("Digite o raio: ");
+    scanf("%f", &raio);
+    printf("Digite a altura: ");
+    scanf("%f", &altura);
+    
+    vol = PI * raio * raio* altura;
+   
+    printf("O volume do cilindro é: %f \n", vol);
+    return 0;
+}
+
+4)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define PI 3.1416
+int main(int argc, char *argv[])
+{
+    float raio,comprimento, area, volume;;
+    
+    printf("Digite o raio: ");
+    scanf("%f", &raio);
+   
+    comprimento = 2*PI*raio;
+    area = PI*raio*raio;
+    volume = (3.0/4.0)*PI * raio * raio* raio;
+   
+    printf("O comprimento da esfera é: %f \n", comprimento);
+    printf("O area da esfera é: %f \n", area);
+    printf("O volume da esfera é: %f \n", volume);
+    return 0;
+}
+
+5)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main(int argc, char *argv[])
+{
+    int x;
+    float quadrado,cubo,raizQ, raizC;
+    printf("Digite um numero > 0: ");
+    scanf("%d", &x);
+    
+    if(x>0){
+        quadrado = x*x;
+        cubo = x*x*x;
+        raizQ = pow(x,1.0/2); 
+        raizC = pow(x,1.0/3);
+        
+        printf("O quadrado do numero é: %f \n", quadrado);
+        printf("O cubo do numero é: %f \n", cubo);
+        printf("A raiz quadrada do numero é: %f \n", raizQ);
+        printf("A raiz cúbica do numero é: %f \n", raizC);
+        
+        return 0;
+    }else {
+    printf("numero invalido!!");
+    return 0;
+    }
+}
