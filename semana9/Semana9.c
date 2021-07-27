@@ -11,144 +11,153 @@ typedef enum
 
 typedef struct
 {
-    char nome[30];
-    int numConta;
-    float saldo;
-} stContaCliente;
+    char nome[30], sexo[2];
+    int idade;
+    float altura, peso;
+} stPaciente;
 
-bool VerificaCliente(stContaCliente cliente[30], char nome[30], int numeroConta)
+void ExibirPacientesMaisPesado(stPaciente paciente[20])
 {
-    int numCountPerUser = 0;
-    int numNumConta = 0;
+    int maiorPeso = 0;
+    int maiorPesoIndex = -1;
 
-    for (int i = 0; i < 30; i++)
-    {
-        if (cliente[i].numConta == numeroConta)
-            numNumConta++;
-
-        if (strcmp(nome, cliente[i].nome) == 0)
-            numCountPerUser++;
-    }
-    if (numCountPerUser > 15)
-    {
-        printf("Numero de contas do cliente excede 15!\n");
-        return false;
-    }
-    if (numNumConta > 1)
-    {
-        printf("Numero de conta indisponivel!\n");
-        return false;
-    }
-
-    return true;
+    for (int i = 0; i < 20; i++)
+        if (strcmp(paciente[i].sexo, "f") == 0 || strcmp(paciente[i].sexo, "m") == 0)
+        {
+            if (paciente[i].peso > maiorPeso)
+            {
+                maiorPeso = paciente[i].peso;
+                maiorPesoIndex = i;
+            }
+        }
+    printf("Nome: %s\n", paciente[maiorPesoIndex].nome);
+    printf("Idade: %d\n", paciente[maiorPesoIndex].idade);
+    return;
 }
-void CadastrarContas(stContaCliente cliente[30])
+
+void CadastrarPaciente(stPaciente paciente[20], int id)
 {
     int select = 0;
 
-    for (int i = 0; i < 30; i++)
+    char nome[30];
+    getchar();
+    printf("ID = %d\n", id);
+    printf("Digite nome: ");
+    gets(paciente[id].nome);
+
+    while (true)
     {
-        char nome[30];
-        getchar();
-        printf("ID = %d\n", i);
-        printf("Digite nome: ");
-        gets(cliente[i].nome);
-
-        printf("Digite o numero da conta: ");
-        scanf("%d", &cliente[i].numConta);
-
-        printf("Digite o saldo(R$): ");
-        scanf("%f", &cliente[i].saldo);
-
-        if (!VerificaCliente(cliente, cliente[i].nome, cliente[i].numConta))
-        {
-            cliente[i] = cliente[i + 1];
-            i--;
-        }
-        printf("Deseja parar de adicionar usuarios? (1 - comfirmar): ");
-        scanf("%d", &select);
-        if (select == 1)
+        printf("Digite o sexo 'm'(masculino) ou 'f'(feminino): ");
+        scanf("%s", &paciente[id].sexo);
+        if (strcmp(paciente[id].sexo, "f") == 0)
             break;
+        if (strcmp(paciente[id].sexo, "m") == 0)
+            break;
+    }
+
+    printf("Digite a idade: ");
+    scanf("%d", &paciente[id].idade);
+
+    printf("Digite o peso(kg): ");
+    scanf("%f", &paciente[id].peso);
+
+    printf("Digite o altura(m): ");
+    scanf("%f", &paciente[id].altura);
+
+    printf("Deseja adicionar mais algum paciente? (1 - comfirmar): ");
+    scanf("%d", &select);
+    if (select == 1)
+    {
+        id++;
+        CadastrarPaciente(paciente, id);
+    }
+    id++;
+    return;
+}
+
+void ExibirPacientesAbaixoDoPeso(stPaciente paciente[20])
+{
+    printf("Pacientes ABAIXO do peso ideal:\n");
+    for (int i = 0; i < 20; i++)
+    {
+        if (strcmp(paciente[i].sexo, "f") == 0 || strcmp(paciente[i].sexo, "m") == 0)
+        {
+            if (strcmp(paciente[i].sexo, "m") == 0)
+                if (paciente[i].peso < ((72.7 * paciente[i].altura) - 58))
+                {
+                    printf("Nome: %s\n", paciente[i].nome);
+                    printf("Idade: %d\n", paciente[i].idade);
+                    printf("Peso Ideal: %f\n", ((72.7 * paciente[i].altura) - 58));
+                }
+            if (strcmp(paciente[i].sexo, "f") == 0)
+                if (paciente[i].peso < ((62.1 * paciente[i].altura) - 44.7))
+                {
+                    printf("Nome: %s\n", paciente[i].nome);
+                    printf("Idade: %d\n", paciente[i].idade);
+                    printf("Peso Ideal: %f\n", ((62.1 * paciente[i].altura) - 44.7));
+                }
+        }
     }
     return;
 }
 
-void ExibirContas(stContaCliente cliente[30])
+void ExibirPacientesAcimaDoPeso(stPaciente paciente[20])
 {
-
-    bool clienteVerification = false;
-    char nome[30] = "";
-    getchar();
-    printf("Digite o nome do cliente:");
-    gets(nome);
-
-    for (int i = 0; i < 30; i++)
+    printf("Pacientes ACIMA do peso ideal:\n");
+    for (int i = 0; i < 20; i++)
     {
-        if (strcmp(nome, cliente[i].nome) == 0)
+        if (strcmp(paciente[i].sexo, "f") == 0 || strcmp(paciente[i].sexo, "m") == 0)
         {
-            clienteVerification = true;
-            printf("ID = %d\n", i);
-            printf("Nome: %s\n", cliente[i].nome);
-            printf("Numero da conta: %d\n", cliente[i].numConta);
-            printf("Saldo: %f R$\n", cliente[i].saldo);
+            if (strcmp(paciente[i].sexo, "m") == 0)
+                if (paciente[i].peso > ((72.7 * paciente[i].altura) - 58))
+                {
+                    printf("Nome: %s\n", paciente[i].nome);
+                    printf("Idade: %d\n", paciente[i].idade);
+                    printf("Peso Ideal: %f\n", ((72.7 * paciente[i].altura) - 58));
+                }
+            if (strcmp(paciente[i].sexo, "f") == 0)
+                if (paciente[i].peso > ((62.1 * paciente[i].altura) - 44.7))
+                {
+                    printf("Nome: %s\n", paciente[i].nome);
+                    printf("Idade: %d\n", paciente[i].idade);
+                    printf("Peso Ideal: %f\n", ((62.1 * paciente[i].altura) - 44.7));
+                }
         }
-    }
-    if (!clienteVerification)
-    {
-        printf("cliente não encontrado!! \n");
-        return;
-    }
-    if (clienteVerification)
-    {
-        return;
-    }
-}
-
-void ExcluirContaMenorSaldo(stContaCliente cliente[30])
-{
-    float menorValue = 999999.0;
-    int menorIndex = -1;
-    for (int i = 0; i < 30; i++)
-    {
-        if (cliente[i].saldo < menorValue)
-        {
-            menorValue = cliente[i].saldo;
-            menorIndex = i;
-        }
-    }
-    for (int i = menorIndex; i < 30 - menorIndex; i++)
-    {
-        cliente[i] = cliente[i + 1];
     }
     return;
 }
 
 int main(int argc, char *argv[])
 {
+    int id = 0;
     bool executa = true;
     int opcao = 0;
-    stContaCliente cliente[30];
+    stPaciente paciente[20];
 
     while (executa)
     {
-        printf("1. cadastrar conta. \n2. visualizar todas as contas de um determinado cliente. \n3. excluir a conta com menor saldo.\n4. sair do programa\n");
+        printf("1. cadastrar paciente. \n2. visualizar todos os pacientes acima do peso. \n3. visualizar todos os pacientes abaixo do peso.\n4. visualizar o paciente mais pesado. \n5. sair do programa\n");
         scanf("%d", &opcao);
 
         switch (opcao)
         {
         case 1:
-            CadastrarContas(cliente);
+            CadastrarPaciente(paciente, id);
             break;
 
         case 2:
-            ExibirContas(cliente);
+            ExibirPacientesAcimaDoPeso(paciente);
             break;
 
         case 3:
-            ExcluirContaMenorSaldo(cliente);
+            ExibirPacientesAbaixoDoPeso(paciente);
             break;
 
         case 4:
+            ExibirPacientesMaisPesado(paciente);
+            break;
+
+        case 5:
             executa = false;
             break;
         default:
