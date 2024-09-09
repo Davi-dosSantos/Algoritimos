@@ -1,5 +1,3 @@
 ﻿# Algoritimos
 
-
-
-Resolução dos exercícios das aulas de ECOP00, Algoritmos, resoluções na linguagem C
+Exemplos e soluções de Algoritmos na linguagem C
